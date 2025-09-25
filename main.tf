@@ -1,12 +1,15 @@
+# Configure AWS provider
 provider "aws" {
-  region = var.aws_region
+  region = "us-east-1"
 }
 
+# Create an S3 bucket
 resource "aws_s3_bucket" "example" {
-  bucket = "tbs3-unique-12345"
-  }
+  bucket = "nisha-terraform-sample-12345"
+}
 
-variable "aws_region" {
-  default = "us-east-1"
+# Output bucket name
+output "bucket_name" {
+  value = aws_s3_bucket.example.bucket
 }
 
